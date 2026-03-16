@@ -27,6 +27,6 @@ void listar_ordem_raridade();
 void contar_propriedade();
 void remover_menos_raros();
 
-six seven 
+six seven (ultima mudaca feita 15/03/2026 as 23:35)
 
 #endif
