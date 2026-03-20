@@ -27,15 +27,19 @@ void inserir_item(){
     cout << "Insira os dados dos itens na ordem: nome do item, dono, propriedade magica, raridade" << endl;
     cin >> nome_item >> dono >> propriedade_magica >> raridade;
     
-    if (raridade < 0 || raridade > 100){ // validacao do nivel de raridade
-		cout << "O nivel de raridade deve ser no minimo 0 e no maximo 100!" << endl;
-		cin >> raridade;
+    if(raridade < 0 || raridade > 100){
+		while(raridade < 0 || raridade > 100){ // validacao do nivel de raridade
+			cout << "O nivel de raridade deve ser no minimo 0 e no maximo 100!" << endl;
+			cout << "Digite o valor correto de raridade: ";
+			cin >> raridade;
+		}
 	}
-	
-    itens[id] = {id, nome_item, dono, propriedade_magica, raridade};
-    cout << nome_item << " inserido a Bolsa Devoradora" << endl;
-    id++;
-    N++;
+	else{
+		itens[id] = {id, nome_item, dono, propriedade_magica, raridade};
+    	cout << nome_item << " inserido a Bolsa Devoradora" << endl;
+    	id++;
+    	N++;
+	}
 }
 
 void cadastrar_similaridade(){
