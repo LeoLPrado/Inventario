@@ -2,13 +2,13 @@
 <Layout>
 	<Files>
 		<File Name="main.cpp" Top="No" Tabpos="1" TopLine="1">
-			<Cursor Line="50" Column="2"/>
+			<Cursor Line="10" Column="20"/>
 		</File>
-		<File Name="opcoes_menu.cpp" Top="No" Tabpos="2" TopLine="9">
-			<Cursor Line="70" Column="2"/>
+		<File Name="opcoes_menu.cpp" Top="Yes" Tabpos="2" TopLine="13">
+			<Cursor Line="35" Column="4"/>
 		</File>
-		<File Name="opcoes_menu.h" Top="Yes" Tabpos="3" TopLine="1">
-			<Cursor Line="32" Column="7"/>
+		<File Name="opcoes_menu.h" Top="No" Tabpos="3" TopLine="1">
+			<Cursor Line="30" Column="1"/>
 		</File>
 	</Files>
 </Layout>

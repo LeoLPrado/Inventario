@@ -14,9 +14,9 @@ using namespace std;
 int main(){
     int opcao;
 	
+	cout << "--- Bem vindo(a) ao inventario: Bolsa Devoradora ---" << endl;
 	while(true)
 	{
-		
 		mostrar_opcoes();	
     	
     	if (!(cin >> opcao)) {

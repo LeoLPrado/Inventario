@@ -12,6 +12,12 @@ struct Item {
     int raridade;
 };
 
+struct Aresta {
+    int id1;
+    int id2;
+    int peso;
+};
+
 // Variaveis Gloabais para comunicacao entre os arquivos
 extern int id;      
 extern int N;
