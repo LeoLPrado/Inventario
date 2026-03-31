@@ -48,16 +48,28 @@ void inserir_item(){
 void cadastrar_similaridade(){
 	int peso;
 	int id1, id2; //papel de  origem, destino
+	string op;
 		
-	cout << "Inisra os ids dos item a serem cadastrados com similaridade: " << endl;
+	cout << "Insira os ids dos item a serem cadastrados com similaridade: " << endl;
 	cin >> id1 >> id2;
-		
-	cout << "Insira o valor da similaridade: " << endl;
-	cin >> peso;
+	if((id1 < N && id1 >= 0) && (id2 < N && id2 >= 0)){
+		cout << "Itens a serem cadastrados: " << id1 << " -> " << itens[id1].nome << ", " << id2 << " -> " << itens[id2].nome << endl;
+		cout << "Tem certeza que deseja cadastrar esses itens? [y/n]" << endl;
+		cin >> op;
+		if(op == "y" || op == "Y"){
+			cout << "Insira o valor da similaridade entre eles: " << endl;
+			cin >> peso;
 	
-	
-	grafo[id1].push_back({id1, id2, peso});
-	grafo[id2].push_back({id2, id1, peso});
+			grafo[id1].push_back({id1, id2, peso});
+			grafo[id2].push_back({id2, id1, peso});
+		}
+		else{
+			cout << "Se quiser realizar o cadastro entre dois itens aperte 2" << endl;
+		}
+	}
+	else if((id1 > N || id1 < 0) || (id2 > N || id2 < 0)){
+		cout << "Id invalido, voce deve inserir o valor para o id de 0 ate " << N - 1 << endl;
+	}
 }
 
 void buscar_similares(){
