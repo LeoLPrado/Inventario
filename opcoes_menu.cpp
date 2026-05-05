@@ -4,7 +4,6 @@
 #include "opcoes_menu.h" 
 
 using namespace std;
-typedef treenode* treenodeptr;
 
 void mostrar_opcoes(){
         cout << "1. Inserir item" << endl;
@@ -24,45 +23,7 @@ list<Aresta> grafo[1000];
 
 int id = 0;
 int N = 0;
-
-//-----------------------ARVORE--------------------------
-void tInsert(treenodeptr &p, string x) {
-    if (p == NULL) {
-        p = new treenode;
-        p->info = x;
-        p->left = NULL;
-        p->right = NULL;
-    }
-    else if (x < p->info) {
-        tInsert(p->left, x);
-    }
-    else {
-        tInsert(p->right, x);
-    }
-}
-
-bool buscar_nome(treenodeptr p, string x) {
-    if (p == NULL) return false;
-
-    if (x == p->info) return true;
-
-    if (x < p->info)
-        return buscar_nome(p->left, x);
-    else
-        return buscar_nome(p->right, x);
-}
-
-void listar_inordem(treenodeptr p) {
-    if (p != NULL) {
-        listar_inordem(p->left);
-        cout << p->info << endl;
-        listar_inordem(p->right);
-    }
-}
-
-// ---------------------------------------------------------
-
-void inserir_item(treenodeptr &root){
+void inserir_item(){
 	
 	string nome_item, dono, propriedade_magica;
 	int raridade;
@@ -70,9 +31,6 @@ void inserir_item(treenodeptr &root){
     cout << "-INSIRA OS ITENS-" << endl;
     cout << endl <<  "nome do item: " << endl;
     getline (cin >> ws, nome_item);
-    
-   tInsert(root, nome_item);
-    
     cout << endl << "dono: " << endl;
     cin >> dono;
     cout << endl <<  "propriedade magica" << endl;
@@ -169,29 +127,24 @@ void buscar_similares(){
     cout << endl;
 }
 
-void verificar_existencia(treenodeptr root) {
-    string nome;
-
-    cout << "Digite o nome do item: ";
-    getline(cin >> ws, nome);
-
-    if (buscar_nome(root, nome)) {
-        cout << "Item encontrado!\n";
-    } else {
-        cout << "Item nao encontrado!\n";
-    }
+void verificar_existencia(){
+    cout << "Funcionalidade em construcao..." << endl;
 }
 
-void listar_ordem_alfabetica(treenodeptr root) {
-    if (root == NULL) {
-        cout << "Arvore vazia!\n";
-        return;
-    }
+void listar_ordem_alfabetica(){
 
-    cout << "\nItens em ordem alfabetica:\n";
-    listar_inordem(root);
+    cout << "Funcionalidade em construcao..." << endl;
+	// apenas teste para verificar o autoincremento do id nos itens
+   /* cout << endl << "-- ITEMS DENTRO DO INVENTARIO --" << endl; 
+	for(int i = 0; i < N; i++){
+	 	cout << endl <<  "| ID: " << itens[i].id << endl;
+        cout << "| Nome: " << itens[i].nome << endl;
+        cout << "| Dono: " << itens[i].dono << endl;
+        cout << "| Propriedade: " << itens[i].propriedade_magica << endl;
+        cout << "| Raridade: " << itens[i].raridade << endl;
+        cout << endl;
+	}*/
 }
-
 
 void listar_ordem_raridade(){
     cout << "Funcionalidade em construcao..." << endl;

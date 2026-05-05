@@ -6,6 +6,10 @@
 
 using namespace std;
 
+/* ====================== */
+/* STRUCTS */
+/* ====================== */
+
 struct Item {
     int id;
     string nome;
@@ -20,29 +24,26 @@ struct Aresta {
     int peso;
 };
 
-struct treenode {
-    string info;
-    treenode *left;
-    treenode *right;
-};
-typedef treenode* treenodeptr;
+/* ====================== */
+/* VARIÁVEIS GLOBAIS */
+/* ====================== */
 
-// Variaveis globais
 extern int id;
 extern int N;
+
 extern Item itens[1000];
 extern list<Aresta> grafo[1000];
 
-// Funcoes
+/* ====================== */
+/* FUNÇÕES */
+/* ====================== */
+
 void mostrar_opcoes();
-void tInsert(treenodeptr &p, string x);
-void inserir_item(treenodeptr &root);
+void inserir_item();
 void cadastrar_similaridade();
 void buscar_similares();
-bool buscar_nome(treenodeptr p, string x);
-void verificar_existencia(treenodeptr root);
-void listar_inordem(treenodeptr p);
-void listar_ordem_alfabetica(treenodeptr root);
+void verificar_existencia();
+void listar_ordem_alfabetica();
 void listar_ordem_raridade();
 void contar_propriedade();
 void remover_menos_raros();

@@ -1,5 +1,7 @@
-# Casos Teste
+Para o Funcionamento da versão B do código, crie um projeto com o falcon C++ usando Windows Aplication
+Essa biblioteca que vai fazer a main.cpp funcionar, depois de juntar os arquivos, poderá executar.
 
+## Casos testes
 1
 Espada Flamejante
 Aragorn
