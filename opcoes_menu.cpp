@@ -1,10 +1,10 @@
-
 #include <iostream>
 #include <string>
 #include <list>
 #include "opcoes_menu.h" 
 
 using namespace std;
+typedef treenode* treenodeptr;
 
 void mostrar_opcoes(){
         cout << "1. Inserir item" << endl;
@@ -24,19 +24,60 @@ list<Aresta> grafo[1000];
 
 int id = 0;
 int N = 0;
-void inserir_item(){
+
+//-----------------------ARVORE--------------------------
+void tInsert(treenodeptr &p, string x) {
+    if (p == NULL) {
+        p = new treenode;
+        p->info = x;
+        p->left = NULL;
+        p->right = NULL;
+    }
+    else if (x < p->info) {
+        tInsert(p->left, x);
+    }
+    else {
+        tInsert(p->right, x);
+    }
+}
+
+bool buscar_nome(treenodeptr p, string x) {
+    if (p == NULL) return false;
+
+    if (x == p->info) return true;
+
+    if (x < p->info)
+        return buscar_nome(p->left, x);
+    else
+        return buscar_nome(p->right, x);
+}
+
+void listar_inordem(treenodeptr p) {
+    if (p != NULL) {
+        listar_inordem(p->left);
+        cout << p->info << endl;
+        listar_inordem(p->right);
+    }
+}
+
+// ---------------------------------------------------------
+
+void inserir_item(treenodeptr &root){
 	
 	string nome_item, dono, propriedade_magica;
 	int raridade;
 	
     cout << "-INSIRA OS ITENS-" << endl;
-    cout << endl <<  "Nome do item: " << endl;
+    cout << endl <<  "nome do item: " << endl;
     getline (cin >> ws, nome_item);
-    cout << endl << "Dono: " << endl;
+    
+   tInsert(root, nome_item);
+    
+    cout << endl << "dono: " << endl;
     cin >> dono;
-    cout << endl <<  "Categoria:" << endl;
+    cout << endl <<  "propriedade magica" << endl;
     cin >> propriedade_magica;
-    cout << endl <<  "Raridade [0 a 100]" << endl;
+    cout << endl <<  "raridade [0 a 100]" << endl;
     while(true)
 	{
 		if (!(cin >> raridade)) 
@@ -72,7 +113,7 @@ void cadastrar_similaridade(){
 		
 	cout << "Insira os ids dos item a serem cadastrados com similaridade: " << endl;
 	cin >> id1 >> id2;
-	if((id1 < N && id1 >= 0) && (id2 < N && id2 >= 0) && (id1 != id2)){
+	if((id1 < N && id1 >= 0) && (id2 < N && id2 >= 0)){
 		cout << "Itens a serem cadastrados: " << id1 << " -> " << itens[id1].nome << ", " << id2 << " -> " << itens[id2].nome << endl;
 		cout << "Tem certeza que deseja cadastrar esses itens? [y/n]" << endl;
 		cin >> op;
@@ -89,9 +130,6 @@ void cadastrar_similaridade(){
 	}
 	else if((id1 > N || id1 < 0) || (id2 > N || id2 < 0)){
 		cout << "Id invalido, voce deve inserir o valor para o id de 0 ate " << N - 1 << endl;
-	}
-	else if(id1 == id2){
-		cout << "Voce nao pode cadastrar similaridade entre um item e ele mesmo" << endl;
 	}
 }
 
@@ -125,26 +163,35 @@ void buscar_similares(){
     }
 
     if(encontrou == false){
-        cout << "Nenhum item encontrado com esses criterios." << endl;
+        cout << "Nenhum item encontrado com esses criterios.";
+    }
+
+    cout << endl;
+}
+
+void verificar_existencia(treenodeptr root) {
+    string nome;
+
+    cout << "Digite o nome do item: ";
+    getline(cin >> ws, nome);
+
+    if (buscar_nome(root, nome)) {
+        cout << "Item encontrado!\n";
+    } else {
+        cout << "Item nao encontrado!\n";
     }
 }
 
-void verificar_existencia(){
-    cout << "Funcionalidade em construcao..." << endl;
+void listar_ordem_alfabetica(treenodeptr root) {
+    if (root == NULL) {
+        cout << "Arvore vazia!\n";
+        return;
+    }
+
+    cout << "\nItens em ordem alfabetica:\n";
+    listar_inordem(root);
 }
 
-void listar_ordem_alfabetica(){
-	// apenas teste para verificar o autoincremento do id nos itens
-    cout << endl << "-- ITEMS DENTRO DO INVENTARIO --" << endl; 
-	for(int i = 0; i < N; i++){
-	 	cout << endl <<  "| ID: " << itens[i].id << endl;
-        cout << "| Nome: " << itens[i].nome << endl;
-        cout << "| Dono: " << itens[i].dono << endl;
-        cout << "| Propriedade: " << itens[i].propriedade_magica << endl;
-        cout << "| Raridade: " << itens[i].raridade << endl;
-        cout << endl;
-	}
-}
 
 void listar_ordem_raridade(){
     cout << "Funcionalidade em construcao..." << endl;
