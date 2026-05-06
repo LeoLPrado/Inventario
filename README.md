@@ -3,6 +3,7 @@ Essa biblioteca que vai fazer a main.cpp funcionar, depois de juntar os arquivos
 
 ## Casos testes
 1
+
 Espada Flamejante
 Aragorn
 fogo
